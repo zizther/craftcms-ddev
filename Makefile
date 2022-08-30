@@ -25,14 +25,14 @@ init:
 	fi
 	
 	# Remove README.md from craftcms-ddev project 
-	if [ -f README.md.default ]; then \
+	if [ -f README.default.md ]; then \
 		if [ -f README.md ]; then \
 			rm README.md; \
 		fi \
 	fi
 	# Create new README.md from default file
-	if [ -f README.md.default ]; then \
-		mv -f README.md.default README.md; \
+	if [ -f README.default.md ]; then \
+		mv -f README.default.md README.md; \
 	fi
 
 	# Remove changelog file
