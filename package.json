@@ -1,0 +1,40 @@
+{
+  "author": "Craft CMS project",
+  "version": "1.0.0",
+  "dependencies": {
+    "autoprefixer": "^10.4",
+    "postcss": "^8.4",
+    "postcss-css-variables": "^0.18",
+    "postcss-font-display": "^0.3",
+    "postcss-import": "^14.0",
+    "postcss-simple-vars": "^6.0",
+    "postcss-sort-media-queries": "^4.2",
+    "tailwindcss": "^3.1",
+    "vite": "^2.9",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-manifest-sri": "^0.1",
+    "vite-plugin-restart": "^0.1"
+  },
+  "devDependencies": {
+    "alpinejs": "^3.10",
+    "body-scroll-lock": "^3.1",
+    "@splidejs/splide": "^4.0",
+    "gsap": "^3.10",
+    "quicklink": "^2.2",
+    "reframe.js": "^4.0",
+    "vanilla-lazyload": "^17.8"
+  },
+  "engines": {
+    "node": "^16"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production vite build",
+    "dev": "NODE_ENV=dev vite"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 0.5%",
+    "not dead",
+    "not IE 11"
+  ]
+}

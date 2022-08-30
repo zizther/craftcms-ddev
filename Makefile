@@ -1,0 +1,88 @@
+.PHONY: init setup build dev composer craft pull install up
+
+init:
+	# Create .env file
+	if [ ! -f .env ]; then \
+		cp .env.example .env; \
+	fi
+
+	# Remove composer.json from craftcms-ddev project 
+	if [ -f composer.json.default ]; then \
+		rm composer.json; \
+	fi
+	# Create new composer.json from default file
+	if [ -f composer.json.default ]; then \
+		mv -f composer.json.default composer.json; \
+	fi
+
+	# Remove .gitignore from craftcms-ddev project 
+	if [ -f .gitignore.default ]; then \
+		rm .gitignore; \
+	fi
+	# Create new .gitignore from default file
+	if [ -f .gitignore.default ]; then \
+		mv -f .gitignore.default .gitignore; \
+	fi
+	
+	# Remove README.md from craftcms-ddev project 
+	if [ -f README.md.default ]; then \
+		if [ -f README.md ]; then \
+			rm README.md; \
+		fi \
+	fi
+	# Create new README.md from default file
+	if [ -f README.md.default ]; then \
+		mv -f README.md.default README.md; \
+	fi
+
+	# Remove changelog file
+	if [ -f CHANGELOG.md ]; then \
+		rm CHANGELOG.md; \
+	fi
+	# Remove license file
+	if [ -f LICENSE.md ]; then \
+		rm LICENSE.md; \
+	fi
+setup: ddev config
+	install
+build: up
+	ddev exec npm run build
+dev: up
+	ddev launch
+	ddev exec npm run dev
+composer: up
+	ddev composer \
+		$(filter-out $@,$(MAKECMDGOALS))
+craft: up
+	ddev exec php craft \
+		$(filter-out $@,$(MAKECMDGOALS))
+pull: up
+	ddev exec bash scripts/pull_assets.sh
+	ddev exec bash scripts/pull_db.sh
+install: up build
+	ddev exec php craft setup/app-id \
+		$(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft setup/security-key \
+		$(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft install \
+		$(filter-out $@,$(MAKECMDGOALS))
+	ddev exec php craft plugin/install aws-s3
+	ddev exec php craft plugin/install cp-clearcache
+	ddev exec php craft plugin/install cp-field-inspect
+	ddev exec php craft plugin/install craft-ray
+	ddev exec php craft plugin/install redactor
+	ddev exec php craft plugin/install quick-field
+	ddev exec php craft plugin/install seomatic
+	ddev exec php craft plugin/install cookies
+	ddev exec php craft plugin/install typedlinkfield
+	ddev exec php craft plugin/install vite
+up:
+	if [ ! "$$(ddev describe | grep OK)" ]; then \
+        ddev auth ssh; \
+        ddev start; \
+        ddev composer install; \
+        ddev exec npm install; \
+    fi
+%:
+	@:
+# ref: https://stackoverflow.com/questions/6273608/how-to-pass-argument-to-makefile-from-command-line

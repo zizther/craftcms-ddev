@@ -1,0 +1,14 @@
+{% extends "_layouts/site" %}
+
+{% block headMeta %}
+    <meta name="apple-mobile-web-app-title" content="{{ siteName }}">
+    <meta name="application-name" content="{{ siteName }}">
+{% endblock %}
+
+{% block content %}
+
+    {% cache %}
+        <h1>Home</h1>
+    {% endcache %}
+
+{% endblock %}

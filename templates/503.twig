@@ -1,0 +1,25 @@
+{% set env = getenv('CRAFT_ENVIRONMENT') %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>{{ siteName }}</title>
+</head>
+<body style="background: #e8e5e3; height: 100%; margin: 0; font-family: Helvetica, Arial, sans-serif;">
+
+    <div style="width: 320px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <h1>{{ siteName }}</h1>
+
+        {% if env == 'production' %}
+            <h2>We are updating our site</h2>
+            <p>The site is currently undergoing scheduled maintenance. Please retry shortly.</p>
+        {% else %}
+            <p>To access this site you must first login to the CMS.</p>
+        {% endif %}
+    </div>
+
+</body></html>

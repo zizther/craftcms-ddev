@@ -1,0 +1,29 @@
+{
+  "name": "zizther/craftcms-ddev",
+  "description": "A Craft CMS starter project using DDEV for local hosting and Vite for front-end bundling and HMR.",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "ddev"
+  ],
+  "license": "MIT",
+  "type": "project",
+  "support": {
+    "email": "info@vimia.co.uk",
+    "issues": "https://github.com/zizther/craftcms-ddev/issues",
+    "source": "https://github.com/zizther/craftcms-ddev"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true,
+      "treeware/plant": false
+    }
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "make init",
+    ]
+  }
+}
