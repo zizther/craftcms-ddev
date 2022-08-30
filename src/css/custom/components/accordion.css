@@ -1,0 +1,32 @@
+[data-accordion] {
+    [data-accordion-item] {
+        &.-open {
+            .indicator {
+                &::before {
+                    @apply transform rotate-45;
+                }
+                &::after {
+                    @apply transform -rotate-45;
+                }
+            }
+        }
+    }
+    .indicator {
+        height: 16px;
+        width: 34px;
+
+        &::before,
+        &::after {
+            @apply absolute bg-current left-1/2 -translate-x-1/2 transition;
+            content: '';
+            height: 100%;
+            width: 2px;
+        }
+        &::before {
+            @apply transform -rotate-45 left-[15px];
+        }
+        &::after {
+            @apply transform rotate-45 left-[25px];
+        }
+    }
+}

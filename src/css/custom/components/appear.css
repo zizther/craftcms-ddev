@@ -1,0 +1,31 @@
+[data-appear],
+.appear-child {
+    @apply opacity-0 translate-y-[20px];
+    transition: opacity .7s ease-out, transform .7s ease-out;
+    will-change: transform;
+
+    &._visible {
+        @apply opacity-100 translate-y-0;
+    }
+
+    &.appear-grow {
+        @apply h-0 opacity-100 transform-none;
+        transition: height .7s ease-out;
+        will-change: height;
+
+        &._visible {
+            @apply h-full opacity-100 translate-y-0;
+        }
+    }
+}
+
+@media (prefers-reduced-motion) {
+    [data-appear],
+    .appear-child {
+        @apply opacity-100 transform-none transition-none;
+
+        &.appear-grow {
+            @apply h-full transition-none;
+        }
+    }
+}

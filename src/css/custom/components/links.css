@@ -1,0 +1,5 @@
+.block-link {
+    &::after {
+        @apply absolute inset-0 block content-[''];
+    }
+}

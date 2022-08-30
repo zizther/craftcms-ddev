@@ -1,0 +1,22 @@
+button,
+[role="button"] {
+    &:disabled,
+    &[disabled] {
+        @apply cursor-default opacity-70 pointer-events-none;
+    }
+}
+
+.btn {
+    @apply border-2 border-black cursor-pointer font-bold rounded-full px-7 py-2 table text-black !no-underline hover:bg-black hover:text-white motion-safe:transition;
+
+    &._white {
+        @apply border-white text-white hover:bg-white hover:text-black;
+    }
+    &._solid {
+        @apply bg-black text-white hover:bg-transparent hover:text-black;
+
+        &._white {
+            @apply bg-white text-black hover:bg-transparent hover:text-white;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+.content {
+    p,
+    ul,
+    ol {
+        @apply mb-4 last:mb-0;
+    }
+    ul,
+    ol {
+        @apply leading-tight space-y-0.5;
+    }
+    p {
+        @apply text-xl;
+    }
+    ul {
+        @apply list-disc;
+    }
+    ol {
+        @apply list-decimal;
+    }
+    a {
+        @apply underline hover:no-underline;
+    }
+
+    /* Size */
+    &._small {
+        p {
+            @apply text-base;
+        }
+    }
+
+    /* Styles */
+    &._dash-list {
+        ul {
+            @apply list-none;
+
+            li {
+                @apply pl-5 relative;
+
+                &::before {
+                    @apply absolute top-0 left-0 content-['—'];
+                }
+            }
+        }
+    }
+}

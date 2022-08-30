@@ -1,0 +1,45 @@
+/**
+ * Improves font rendering
+ */
+* {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-rendering: optimizeLegibility;
+}
+
+html {
+    scroll-behavior: smooth;
+
+    @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+    }
+}
+
+html,
+body {
+    /* Browser - scroll padding */
+    scroll-padding-top: 0;
+}
+
+body {
+    @apply h-screen-true;
+}
+
+
+/**
+ * Focus visible styles for keyboard interactions
+ */
+*,
+button {
+    @apply focus:outline-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-opacity-100 focus-visible:ring-current focus-visible:rounded-sm;
+}
+input {
+    @apply focus-visible:outline-none focus-visible:ring-0;
+}
+
+/**
+ * SVG
+ */
+svg {
+    @apply h-full w-auto;
+}

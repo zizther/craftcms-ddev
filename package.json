@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "NODE_ENV=production vite build",
-    "dev": "NODE_ENV=dev vite"
+    "dev": "NODE_ENV=develop vite"
   },
   "browserslist": [
     "last 2 versions",
