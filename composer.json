@@ -23,7 +23,7 @@
   },
   "scripts": {
     "post-create-project-cmd": [
-      "make init",
+      "make init"
     ]
   }
 }
