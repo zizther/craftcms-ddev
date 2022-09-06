@@ -66,6 +66,9 @@ return [
         // Max file upload size
 	    'maxUploadFileSize' => 5242880, // 5mb
 
+        // Max revisions
+        'maxRevisions' => 5,
+
         // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
 
