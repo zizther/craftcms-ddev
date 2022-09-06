@@ -6,7 +6,7 @@ init:
 		cp .env.example .env; \
 	fi
 
-	# Remove composer.json from craftcms-ddev project 
+	# Remove composer.json from craftcms-ddev project
 	if [ -f composer.json.default ]; then \
 		rm composer.json; \
 	fi
@@ -15,7 +15,7 @@ init:
 		mv -f composer.json.default composer.json; \
 	fi
 
-	# Remove .gitignore from craftcms-ddev project 
+	# Remove .gitignore from craftcms-ddev project
 	if [ -f .gitignore.default ]; then \
 		rm .gitignore; \
 	fi
@@ -23,8 +23,8 @@ init:
 	if [ -f .gitignore.default ]; then \
 		mv -f .gitignore.default .gitignore; \
 	fi
-	
-	# Remove README.md from craftcms-ddev project 
+
+	# Remove README.md from craftcms-ddev project
 	if [ -f README.default.md ]; then \
 		if [ -f README.md ]; then \
 			rm README.md; \
@@ -43,8 +43,9 @@ init:
 	if [ -f LICENSE.md ]; then \
 		rm LICENSE.md; \
 	fi
-setup: ddev config
-	install
+setup:
+	ddev config
+	make install
 build: up
 	ddev exec npm run build
 dev: up
@@ -59,7 +60,9 @@ craft: up
 pull: up
 	ddev exec bash scripts/pull_assets.sh
 	ddev exec bash scripts/pull_db.sh
-install: up build
+install: up \
+    ddev composer install; \
+    ddev exec npm install; \
 	ddev exec php craft setup/app-id \
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev exec php craft setup/security-key \
@@ -80,8 +83,6 @@ up:
 	if [ ! "$$(ddev describe | grep OK)" ]; then \
         ddev auth ssh; \
         ddev start; \
-        ddev composer install; \
-        ddev exec npm install; \
     fi
 %:
 	@:
