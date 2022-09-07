@@ -13,4 +13,5 @@ module.exports = {
       sort: 'mobile-first'
     }
   },
+  ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
 };
