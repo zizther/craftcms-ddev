@@ -6,11 +6,6 @@ module.exports = {
     './templates/**/*.{html,twig,html.twig}',
     './src/js/**/*.{js,jsx,ts,tsx,vue}'
   ],
-  safelist: [
-    {
-      pattern: /c/ // secures any class starting with `c-`
-    }
-  ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
