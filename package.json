@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "autoprefixer": "^10.4",
+    "cssnano": "^5.1",
     "postcss": "^8.4",
     "postcss-css-variables": "^0.18",
     "postcss-font-display": "^0.3",
@@ -29,7 +30,7 @@
   },
   "scripts": {
     "build": "NODE_ENV=production vite build",
-    "dev": "NODE_ENV=develop vite"
+    "dev": "NODE_ENV=development vite"
   },
   "browserslist": [
     "last 2 versions",
