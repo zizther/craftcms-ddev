@@ -38,9 +38,9 @@ return [
         'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
         'modules' => [
             'businesslogic' => [
-            'class' => BusinessLogic::class,
-            'components' => [],
-        ],
+                'class' => BusinessLogic::class,
+                'components' => [],
+            ],
         ],
         'bootstrap' => ['businesslogic'],
     ],
