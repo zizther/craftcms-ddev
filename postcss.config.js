@@ -13,6 +13,6 @@ module.exports = {
             sort: 'mobile-first'
         }
     },
-    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
-    ...(process.env.NODE_ENV === 'production' ? { 'postcss-discard-comments': {removeAll: true} } : {}),
+    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
+    ...(process.env.NODE_ENV === 'production' ? { 'postcss-discard-comments': {removeAll: true} } : {})
 };
