@@ -1,17 +1,18 @@
 module.exports = {
-  plugins: {
-    'postcss-import': {},
-    'postcss-simple-vars': {},
-    'tailwindcss/nesting': {},
-    'tailwindcss': {},
-    'postcss-font-display': {
-      display: 'swap',
-      replace: false
+    plugins: {
+        'postcss-import': {},
+        'postcss-simple-vars': {},
+        'tailwindcss/nesting': {},
+        'tailwindcss': {},
+        'postcss-font-display': {
+            display: 'swap',
+            replace: false
+        },
+        'autoprefixer': {},
+        'postcss-sort-media-queries': {
+            sort: 'mobile-first'
+        }
     },
-    'autoprefixer': {},
-    'postcss-sort-media-queries': {
-      sort: 'mobile-first'
-    }
-  },
-  ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
+    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
+    ...(process.env.NODE_ENV === 'production' ? { 'postcss-discard-comments': {removeAll: true} } : {}),
 };
