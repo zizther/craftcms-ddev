@@ -1,10 +1,10 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@css/*": ["./src/css/*"],
-      "@js/*": ["./src/js/*"]
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"],
+            "@css/*": ["./src/pcss/*"],
+            "@js/*": ["./src/js/*"]
+        }
     }
-  }
 }
