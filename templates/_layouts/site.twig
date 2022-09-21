@@ -5,27 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/device-icons/apple-touch-icon.png?v=4">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/device-icons/favicon-32x32.png?v=4">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/device-icons/favicon-16x16.png?v=4">
-    <link rel="manifest" href="/assets/device-icons/site.webmanifest?v=4">
-    <link rel="mask-icon" href="/assets/device-icons/safari-pinned-tab.svg?v=4" color="#000000">
-    <link rel="shortcut icon" href="/assets/device-icons/favicon.ico?v=4">
-    <meta name="msapplication-TileColor" content="#000000">
-    <meta name="msapplication-config" content="/assets/device-icons/browserconfig.xml?v=4">
-    <meta name="theme-color" content="#000000">
+    {% include '_components/layout/favicon' %}
 
     {% block headMeta %}{% endblock %}
 
-    {% include '_components/layout/head-js' %}
-
     {# vite our app; pass `false` so that CSS is not async loaded #}
+    {{ craft.vite.script('src/js/platform.js', false) }}
     {{ craft.vite.script('src/js/app.js', false) }}
 </head>
 <body>
 
     {% include '_components/layout/nav' %}
-
     {% include '_components/layout/header' %}
 
 	{% block content %}
@@ -34,7 +24,6 @@
 	{% endblock %}
 
     {% include '_components/layout/footer' %}
-
     {% include '_components/layout/cookies' %}
 
 </body></html>
