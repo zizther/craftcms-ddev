@@ -138,7 +138,11 @@ A Makefile has been included to provide a unified CLI for common development com
 - `make composer xxx` - Run Composer commands inside the container, e.g. `make composer install`
 - `make craft xxx` - Run Craft commands inside the container, e.g. `make craft project-config/touch`
 - `make npm xxx` - Run npm commands inside the container, e.g. `make npm install`
+- `make clean` - Removes the `composer.lock`, `package-lock.json` and the entire `node_modules` & `vendor` directory
+- `make nuke` - Restarts the project from scratch by running `make clean` (above), then reinstalls composer and node packages
 - `make pull` - Pull remote db & assets (requires setting up [craft-scripts](https://github.com/nystudio107/craft-scripts/)
+
+**Tip**: If you try a command like `make craft project-config/apply --force` you’ll see an error, because the shell thinks the `--force` flag should be applied to the `make` command. To side-step this, use the `--` (double-dash) to disable further option processing, like this: `make -- craft project-config/apply --force`
 
 ## Craft CMS Plugins
 
@@ -168,4 +172,4 @@ A Makefile has been included to provide a unified CLI for common development com
 7. [Vanilla Lazyload](https://github.com/verlok/vanilla-lazyload)
 
 ## Kudos
-Thanks to johndwells for the inspiration
+Thanks to Andrew (nystudio107) and johndwells for the inspiration 
