@@ -1,4 +1,4 @@
-.PHONY: init setup build dev composer craft pull install up
+.PHONY: init setup clean build dev composer npm craft nuke pull install up
 
 init:
 	# Create .env file
@@ -46,6 +46,11 @@ init:
 setup:
 	ddev config
 	make install
+clean:
+	rm -f composer.lock
+	rm -rf vendor/
+	rm -f package-lock.json
+	rm -rf node_modules/
 build: up
 	ddev exec npm run build
 dev: up
@@ -54,9 +59,15 @@ dev: up
 composer: up
 	ddev composer \
 		$(filter-out $@,$(MAKECMDGOALS))
+npm: up
+	ddev exec npm \
+		$(filter-out $@,$(MAKECMDGOALS))
 craft: up
 	ddev exec php craft \
 		$(filter-out $@,$(MAKECMDGOALS))
+nuke: clean
+	ddev composer install
+	ddev exec npm install
 pull: up
 	ddev exec bash scripts/pull_assets.sh
 	ddev exec bash scripts/pull_db.sh
