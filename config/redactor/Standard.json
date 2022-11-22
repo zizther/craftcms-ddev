@@ -1,7 +1,32 @@
 {
-  "buttons": ["html", "line", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "file"],
-  "formatting": ["p", "h1", "h2", "h3"],
-  "linkNewTab": true,
-  "plugins": ["fullscreen"],
-  "toolbarFixed": true
+    "buttons": [
+        "html",
+        "format",
+        "bold",
+        "italic",
+        "lists",
+        "link"
+    ],
+    "plugins": [
+        "fullscreen"
+    ],
+    "toolbarFixed": true,
+    "formatting": [
+        "p",
+        "h2",
+        "h3",
+        "blockquote"
+    ],
+    "formattingAdd": {
+        "small": {
+            "title": "Small",
+            "api": "module.block.format",
+            "args": {
+                "tag": "small",
+                "class": "small",
+                "type": "toggle"
+            }
+        }
+    },
+    "linkNewTab": true
 }
