@@ -147,19 +147,19 @@ A Makefile has been included to provide a unified CLI for common development com
 ## Craft CMS Plugins
 
 1. [AWS S3](https://plugins.craftcms.com/aws-s3?craft4)
-2. [Redactor](https://plugins.craftcms.com/redactor?craft4)
+2. [CKEditor](https://plugins.craftcms.com/ckeditor?craft4)
 3. [CP Clear Cache](https://plugins.craftcms.com/cp-clearcache?craft4)
 4. [CP Field Inspect](https://plugins.craftcms.com/cp-field-inspect?craft4)
 5. [Cookies](https://plugins.craftcms.com/cookies?craft4)
 6. [Craft Autocomplete](https://github.com/nystudio107/craft-autocomplete)
-7. [Retour](https://plugins.craftcms.com/retour?craft4)
-8. [SEOmatic](https://plugins.craftcms.com/seomatic?craft4)
-9. [Vite](https://plugins.craftcms.com/vite?craft4)
-10. [Typed Link Field](https://plugins.craftcms.com/typedlinkfield?craft4)
+7. [Hyper](https://plugins.craftcms.com/hyper?craft4)
+8. [Navigation](https://plugins.craftcms.com/navigation?craft4)
+9. [Neo](https://plugins.craftcms.com/neo?craft4)
+10. [Quick Field](https://plugins.craftcms.com/quick-field?craft4)
 11. [Ray](https://plugins.craftcms.com/craft-ray?craft4)
-12. [Neo](https://plugins.craftcms.com/neo?craft4)
-13. [Quick Field](https://plugins.craftcms.com/quick-field?craft4)
-14. [Navigation](https://plugins.craftcms.com/navigation?craft4)
+12. [Retour](https://plugins.craftcms.com/retour?craft4)
+13. [SEOmatic](https://plugins.craftcms.com/seomatic?craft4)
+14. [Vite](https://plugins.craftcms.com/vite?craft4)
 
 ## Javascript Libraries
 
