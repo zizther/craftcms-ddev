@@ -6,13 +6,15 @@
  * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
  */
 
+use craft\helpers\App;
+
 // The site basepath
 define('BASEPATH', realpath(dirname(__FILE__) . '/../') . '/');
 
 // The site URL
-define('SITEURL', getenv('PRIMARY_SITE_URL'));
+define('SITEURL', rtrim(APP::env('PRIMARY_SITE_URL'), '/'));
 
-$env = getenv('CRAFT_ENVIRONMENT');
+$env = APP::env('CRAFT_ENVIRONMENT');
 $isDev = $env === 'dev';
 $isProd = $env === 'production';
 
@@ -37,7 +39,7 @@ return [
         'convertFilenamesToAscii' => true,
 
         // Control Panel trigger word
-        'cpTrigger' => getenv('CRAFT_CP_TRIGGER') ?: 'admin',
+        'cpTrigger' => APP::env('CRAFT_CP_TRIGGER') ?: 'admin',
 
         // Default search term options
         'defaultSearchTermOptions' => [
@@ -78,9 +80,6 @@ return [
         // The SameSite (opens new window)value that should be set on Craft cookies, if any.
         // This can be set to 'Lax', 'Strict', or null.
         'sameSiteCookieValue' => 'Lax',
-
-        // The secure key Craft will use for hashing and encrypting data
-        'securityKey' => getenv('CRAFT_SECURITY_KEY'),
 
         // Remove Craft from header request
 		// Services won't be able to detect what CMS is being used
