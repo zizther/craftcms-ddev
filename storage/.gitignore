@@ -1,5 +1,6 @@
 backups
 composer-backups
+config-deltas
 config-backups
 logs
 runtime
