@@ -17,7 +17,7 @@ return [
         'regenerateSitemapsAutomatically' => true,
 
         // The server environment, either `live`, `staging`, or `local`
-        'environment' => App::env('ENVIRONMENT'),
+        'environment' => App::env('CRAFT_ENVIRONMENT'),
 
         // Should SEOmatic display the SEO Preview sidebar?
         'displayPreviewSidebar' => true,
