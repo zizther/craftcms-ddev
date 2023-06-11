@@ -12,7 +12,7 @@ use craft\helpers\App;
 define('BASEPATH', realpath(dirname(__FILE__) . '/../') . '/');
 
 // The site URL
-define('SITEURL', rtrim(APP::env('PRIMARY_SITE_URL'), '/'));
+define('SITEURL', rtrim(App::env('PRIMARY_SITE_URL'), '/'));
 
 $env = APP::env('CRAFT_ENVIRONMENT');
 $isDev = $env === 'dev';
