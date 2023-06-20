@@ -84,11 +84,10 @@ install: up \
 	ddev exec php craft plugin/install cp-clearcache
 	ddev exec php craft plugin/install cp-field-inspect
 	ddev exec php craft plugin/install craft-ray
-	ddev exec php craft plugin/install redactor
+	ddev exec php craft plugin/install ckeditor
 	ddev exec php craft plugin/install quick-field
 	ddev exec php craft plugin/install seomatic
-	ddev exec php craft plugin/install cookies
-	ddev exec php craft plugin/install typedlinkfield
+	ddev exec php craft plugin/install hyper
 	ddev exec php craft plugin/install vite
 up:
 	if [ ! "$$(ddev describe | grep OK)" ]; then \
