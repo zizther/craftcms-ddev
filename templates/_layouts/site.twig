@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
-    {% include '_components/layout/favicon' %}
+    {% include '_components/layout/favicon.twig' %}
 
     {% block headMeta %}{% endblock %}
 
@@ -15,15 +15,15 @@
 </head>
 <body>
 
-    {% include '_components/layout/nav' %}
-    {% include '_components/layout/header' %}
+    {% include '_components/layout/nav.twig' %}
+    {% include '_components/layout/header.twig' %}
 
 	{% block content %}
 		<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
 		<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
 	{% endblock %}
 
-    {% include '_components/layout/footer' %}
-    {% include '_components/layout/cookies' %}
+    {% include '_components/layout/footer.twig' %}
+    {% include '_components/layout/cookies.twig' %}
 
 </body></html>
