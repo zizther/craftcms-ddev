@@ -35,7 +35,7 @@ return [
         // Cache duration
 	    'cacheDuration' => 'P3M',
 
-        // Ascii character support - Also realted to limitAutoSlugsToAscii
+        // Ascii character support - Also related to limitAutoSlugsToAscii
         'convertFilenamesToAscii' => true,
 
         // Control Panel trigger word
@@ -62,7 +62,7 @@ return [
         // Generate image transform before page load
         'generateTransformsBeforePageLoad' => false,
 
-        // Ascii character support - Also realted to convertFilenamesToAscii
+        // Ascii character support - Also related to convertFilenamesToAscii
         'limitAutoSlugsToAscii' => true,
 
         // Max file upload size
