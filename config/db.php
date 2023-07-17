@@ -12,12 +12,12 @@ use craft\helpers\App;
 
 return [
     'dsn' => App::env('DB_DSN') ?: null,
-    'driver' => getenv('CRAFT_DB_DRIVER'),
-    'server' => getenv('CRAFT_DB_SERVER'),
-    'port' => getenv('CRAFT_DB_PORT'),
-    'user' => getenv('CRAFT_DB_USER'),
-    'password' => getenv('CRAFT_DB_PASSWORD'),
-    'database' => getenv('CRAFT_DB_DATABASE'),
-    'schema' => getenv('CRAFT_DB_SCHEMA'),
-    'tablePrefix' => getenv('CRAFT_DB_TABLE_PREFIX')
+    'driver' => App::env('CRAFT_DB_DRIVER'),
+    'server' => App::env('CRAFT_DB_SERVER'),
+    'port' => App::env('CRAFT_DB_PORT'),
+    'user' => App::env('CRAFT_DB_USER'),
+    'password' => App::env('CRAFT_DB_PASSWORD'),
+    'database' => App::env('CRAFT_DB_DATABASE'),
+    'schema' => App::env('CRAFT_DB_SCHEMA'),
+    'tablePrefix' => App::env('CRAFT_DB_TABLE_PREFIX')
 ];
