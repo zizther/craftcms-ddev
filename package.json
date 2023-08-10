@@ -23,11 +23,11 @@
     },
     "devDependencies": {
         "alpinejs": "^3.12",
-        "body-scroll-lock": "^3.1",
         "@splidejs/splide": "^4.1",
         "gsap": "^3.11",
         "quicklink": "^2.3",
         "reframe.js": "^4.0",
+        "tua-body-scroll-lock": "^1.2",
         "vanilla-lazyload": "^17.8"
     },
     "engines": {
