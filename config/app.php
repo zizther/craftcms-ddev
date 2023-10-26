@@ -26,6 +26,7 @@ use modules\businesslogic\BusinessLogic;
 
 return [
     '*' => [
+        'bootstrap' => ['businesslogic'],
         'components' => [
             'deprecator' => [
                 'throwExceptions' => (bool) APP::env('CRAFT_HARD_MODE'),
@@ -35,14 +36,13 @@ return [
                 'ttr' => 15 * 60,
             ],
         ],
-        'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
+        'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS-'.APP::env('CRAFT_ENVIRONMENT'),
         'modules' => [
             'businesslogic' => [
                 'class' => BusinessLogic::class,
                 'components' => [],
             ],
         ],
-        'bootstrap' => ['businesslogic'],
     ],
     'local' => [
         'components' => [
