@@ -2,7 +2,6 @@ module.exports = {
     plugins: {
         'postcss-import': {},
         'postcss-simple-vars': {},
-        'postcss-mixins': {},
         'tailwindcss/nesting': {},
         'tailwindcss': {},
         'postcss-font-display': {
@@ -14,6 +13,8 @@ module.exports = {
             sort: 'mobile-first'
         }
     },
-    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
-    ...(process.env.NODE_ENV === 'production' ? { 'postcss-discard-comments': {removeAll: true} } : {})
+    ...(process.env.NODE_ENV === 'production' ? {
+        'cssnano': {},
+        'postcss-discard-comments': {removeAll: true}
+    } : {})
 };

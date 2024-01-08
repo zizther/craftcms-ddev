@@ -1,11 +1,14 @@
-import {defineConfig} from 'vite';
+import {defineConfig, splitVendorChunkPlugin} from 'vite';
 import copy from 'rollup-plugin-copy';
 import manifestSRI from 'vite-plugin-manifest-sri';
 import path from 'path';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import viteCompression from 'vite-plugin-compression';
 import ViteRestart from 'vite-plugin-restart';
 import removeConsole from 'vite-plugin-remove-console';
+import preact from "@preact/preset-vite";
+
 
 // https://vitejs.dev/config/
 export default defineConfig(({command}) => ({
@@ -16,13 +19,26 @@ export default defineConfig(({command}) => ({
         },
         manifest: true,
         outDir: path.resolve(__dirname, 'web/dist/'),
+        sourcemap: true,
         rollupOptions: {
             input: {
-                platform: path.resolve(__dirname, 'src/js/platform.js'),
                 app: path.resolve(__dirname, 'src/js/app.js'),
+                platform: path.resolve(__dirname, 'src/js/platform.js'),
             },
             output: {
-                sourcemap: true
+                manualChunks: function manualChunks(id) {
+                    // console.log('====================');
+                    // console.log({id});
+                    // console.log('====================');
+
+                    // Dependencies
+                    if (id.includes('alpine')) {
+                        return 'al';
+                    }
+                    if (id.includes('htmx')) {
+                        return 'ht';
+                    }
+                }
             },
             plugins: [
                 // Used to remove comments from JS files
@@ -34,20 +50,34 @@ export default defineConfig(({command}) => ({
                     // Prevent any compression
                     compress: false
                 }),
-                removeConsole()
+                removeConsole(),
+                splitVendorChunkPlugin()
             ],
         },
+    },
+    esbuild: {
+        loader: { '.js': 'jsx' },
     },
     plugins: [
         copy({
             targets: [
                 {
+                    src: 'src/static/*',
+                    dest: 'web/dist'
+                },
+                {
                     src: 'web/assets/graphics/**/*',
                     dest: 'web/dist/graphics'
+                },
+                {
+                    src: 'web/assets/fonts/**/*',
+                    dest: 'web/dist/fonts'
                 }
             ],
             hook: 'writeBundle'
         }),
+        nodeResolve(),
+        preact(),
         manifestSRI(),
         viteCompression({
             filter: /\.(js|mjs|json|css|map)$/i
