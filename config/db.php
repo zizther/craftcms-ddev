@@ -11,7 +11,7 @@
 use craft\helpers\App;
 
 return [
-    'dsn' => App::env('DB_DSN') ?: null,
+    'dsn' => App::env('CRAFT_DB_DSN') ?: null,
     'driver' => App::env('CRAFT_DB_DRIVER'),
     'server' => App::env('CRAFT_DB_SERVER'),
     'port' => App::env('CRAFT_DB_PORT'),
