@@ -52,8 +52,8 @@ return [
                 $settings->transportType = Smtp::class;
 
                 $settings->transportSettings = [
-                    'host' => APP::env('MAILHOG_SMTP_HOSTNAME'),
-                    'port' => APP::env('MAILHOG_SMTP_PORT'),
+                    'host' => APP::env('MAILPIT_SMTP_HOSTNAME'),
+                    'port' => APP::env('MAILPIT_SMTP_PORT'),
                 ];
 
                 $config = App::mailerConfig($settings);
