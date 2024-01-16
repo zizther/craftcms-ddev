@@ -1,3 +1,11 @@
+// Check for HMR and accept changes
+if (import.meta.hot) {
+    import.meta.hot.accept(() => {
+        console.log('HMR');
+    });
+}
+
+// Wrap the code in an IIFE to prevent polluting the global scope
 (function () {
     let modificators = [],
         nv = navigator,
@@ -33,14 +41,14 @@
     // Browser
     let browserClass = '';
     if (uai('firefox')) {
-        browserClass = 'ff';
-    } else if (uai('edge')) {
+        browserClass = 'firefox';
+    } else if (uai('edg')) {
         browserClass = 'edge';
     } else if (uai('trident') || ani('explorer') || ani('msie')) {
         browserClass = 'ie';
-    } else if (uai('safari') && !uai('chrome')) {
+    } else if (uai('safari') && !uai('chrome') && !uai('edg')) {
         browserClass = 'safari';
-    } else if (uai('chrome')) {
+    } else if (uai('chrome') && !uai('edg')) {
         browserClass = 'chrome';
     }
     modificators.push(browserClass);
