@@ -25,12 +25,14 @@
         "vite-plugin-restart": "^0.4.0"
     },
     "devDependencies": {
-        "alpinejs": "^3.12.3",
+        "@alpinejs/collapse": "3.14.1",
+        "@alpinejs/focus": "3.14.1",
         "@splidejs/splide": "^4.1.4",
-        "gsap": "^3.12.4",
+        "alpinejs": "^3.14.1",
+        "gsap": "^3.12.5",
         "quicklink": "^2.3.0",
         "reframe.js": "^4.0.2",
-        "tua-body-scroll-lock": "^1.2",
+        "tua-body-scroll-lock": "^1.5.0",
         "vanilla-lazyload": "^17.8.5"
     },
     "engines": {
