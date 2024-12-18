@@ -7,7 +7,6 @@ import terser from '@rollup/plugin-terser';
 import viteCompression from 'vite-plugin-compression';
 import ViteRestart from 'vite-plugin-restart';
 import removeConsole from 'vite-plugin-remove-console';
-import preact from "@preact/preset-vite";
 
 
 // https://vitejs.dev/config/
@@ -34,6 +33,12 @@ export default defineConfig(({command}) => ({
                     // Dependencies
                     if (id.includes('alpine')) {
                         return 'al';
+                    }
+                    if (id.includes('barba')) {
+                        return 'bar';
+                    }
+                    if (id.includes('gsap')) {
+                        return 'gsap';
                     }
                     if (id.includes('htmx')) {
                         return 'ht';
@@ -77,7 +82,6 @@ export default defineConfig(({command}) => ({
             hook: 'writeBundle'
         }),
         nodeResolve(),
-        preact(),
         manifestSRI(),
         viteCompression({
             filter: /\.(js|mjs|json|css|map)$/i
