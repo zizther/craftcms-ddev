@@ -72,6 +72,7 @@ pull: up
 	ddev exec bash scripts/pull_assets.sh
 	ddev exec bash scripts/pull_db.sh
 install: up \
+    ddev nvm install 22; \
     ddev composer install; \
     ddev exec npm install; \
 	ddev exec php craft setup/app-id \
