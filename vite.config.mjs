@@ -1,4 +1,5 @@
 import {defineConfig, splitVendorChunkPlugin} from 'vite';
+import tailwindcss from "@tailwindcss/vite";
 import copy from 'rollup-plugin-copy';
 import manifestSRI from 'vite-plugin-manifest-sri';
 import path from 'path';
@@ -34,18 +35,13 @@ export default defineConfig(({command}) => ({
                     if (id.includes('alpine')) {
                         return 'al';
                     }
-                    if (id.includes('barba')) {
-                        return 'bar';
-                    }
                     if (id.includes('gsap')) {
                         return 'gsap';
-                    }
-                    if (id.includes('htmx')) {
-                        return 'ht';
                     }
                 }
             },
             plugins: [
+                tailwindcss(),
                 // Used to remove comments from JS files
                 terser({
                     format: {
@@ -61,7 +57,18 @@ export default defineConfig(({command}) => ({
         },
     },
     esbuild: {
-        loader: { '.js': 'jsx' },
+        loader: 'jsx',
+        jsxFactory: 'h',
+        jsxFragment: 'Fragment',
+        include: [
+            // Add this for business-as-usual behaviour for .jsx files
+            "src/js/**/*.jsx",
+
+            // Add these lines to allow all .js files to contain JSX
+            "src/js/**/*.js",
+        ],
+        //include: /\.[jt]sx?$/, // Treats all combinations of .js, .jsx, .ts, and .tsx files as jsx
+        exclude: [],
     },
     plugins: [
         copy({
@@ -73,10 +80,6 @@ export default defineConfig(({command}) => ({
                 {
                     src: 'web/assets/graphics/**/*',
                     dest: 'web/dist/graphics'
-                },
-                {
-                    src: 'web/assets/fonts/**/*',
-                    dest: 'web/dist/fonts'
                 }
             ],
             hook: 'writeBundle'
@@ -101,8 +104,13 @@ export default defineConfig(({command}) => ({
         },
     },
     server: {
+        allowedHosts: true,
+        cors: true,
         fs: {
             strict: false
+        },
+        headers: {
+            "Access-Control-Allow-Private-Network": "true",
         },
         host: '0.0.0.0',
         origin: 'http://localhost:3000',
