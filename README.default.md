@@ -14,5 +14,5 @@ The site is built on [Craft CMS](https://craftcms.com)
 ## Frontend
 The frontend assets are packaged and optimised using [Vite](https://vitejs.dev/)
 
-Tailwind 3 is used for styling
+Tailwind 4 is used for styling
 
