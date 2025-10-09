@@ -1,4 +1,4 @@
-import {defineConfig, splitVendorChunkPlugin} from 'vite';
+import {defineConfig} from 'vite';
 import tailwindcss from "@tailwindcss/vite";
 import copy from 'rollup-plugin-copy';
 import manifestSRI from 'vite-plugin-manifest-sri';
@@ -52,7 +52,6 @@ export default defineConfig(({command}) => ({
                     compress: false
                 }),
                 removeConsole(),
-                splitVendorChunkPlugin()
             ],
         },
     },
