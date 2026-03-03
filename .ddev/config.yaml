@@ -9,15 +9,13 @@ xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
 database:
-  type: mysql
-  version: "8.0"
+    type: mysql
+    version: "8.0"
 project_tld: test
 use_dns_when_possible: true
 composer_version: "2"
+nodejs_version: "24"
 web_environment: []
 corepack_enable: false
 disable_settings_management: true
 disable_upload_dirs_warning: true
-hooks:
-    post-start:
-        - exec: nvm install v22.15.0 && nvm current
