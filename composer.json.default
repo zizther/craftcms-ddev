@@ -18,14 +18,13 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "craftcms/cms": "5.8.*",
-        "craftcms/ckeditor": "^4.10.1",
+        "craftcms/cms": "5.9.*",
+        "craftcms/ckeditor": "^4.11.2",
         "mmikkel/cp-clearcache": "^2.0.1",
-        "nystudio107/craft-seomatic": "^5.1.18",
+        "nystudio107/craft-seomatic": "^5.1.20",
         "nystudio107/craft-vite": "^5.0.1",
         "spatie/craft-ray": "^2.1.1",
-        "verbb/navigation": "^3.0.13",
-        "vlucas/phpdotenv": "^5.6.2"
+        "vlucas/phpdotenv": "^5.6.3"
     },
     "require-dev": {
         "nystudio107/craft-autocomplete": "^1.12.2",
