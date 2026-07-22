@@ -4,7 +4,7 @@
     "seoTitle": "404 - Page not found"|t
 }) %}
 
-{% block content %}
+{% cache globally using key '404' %}
 
     {% cache %}
         <main class="container text-center">

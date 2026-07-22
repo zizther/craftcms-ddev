@@ -81,7 +81,6 @@ install: up \
 	ddev exec php craft install \
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev exec php craft plugin/install cp-clearcache
-	ddev exec php craft plugin/install craft-ray
 	ddev exec php craft plugin/install ckeditor
 	ddev exec php craft plugin/install seomatic
 	ddev exec php craft plugin/install vite

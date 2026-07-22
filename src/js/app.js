@@ -9,12 +9,3 @@ import "@js/parts/css";
 import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
-
-/**
- * Accept HMR as per: https://vitejs.dev/guide/api-hmr.html
- */
-if (import.meta.hot) {
-    import.meta.hot.accept(() => {
-        console.log("HMR");
-    });
-}

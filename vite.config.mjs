@@ -106,13 +106,13 @@ export default defineConfig(({command}) => ({
         allowedHosts: true,
         cors: true,
         fs: {
-            strict: false
+            strict: false,
         },
         headers: {
             "Access-Control-Allow-Private-Network": "true",
         },
-        host: '0.0.0.0',
-        origin: 'http://localhost:3000',
+        host: "0.0.0.0",
+        origin: "http://localhost:3000",
         port: 3000,
         strictPort: true,
     },

@@ -5,7 +5,5 @@
 
 return [
     // Global settings
-    '*' => [
-
-    ],
+    '*' => [],
 ];
