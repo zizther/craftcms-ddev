@@ -11,8 +11,6 @@
     },
     "devDependencies": {
         "@prettier/plugin-php": "^0.25.0",
-        "@rollup/plugin-node-resolve": "^16.0.3",
-        "@rollup/plugin-terser": "^1.0.0",
         "@tailwindcss/postcss": "^4.3.3",
         "@tailwindcss/vite": "^4.3.3",
         "@zackad/prettier-plugin-twig-melody": "^0.6.0",
@@ -22,15 +20,13 @@
         "postcss-discard-comments": "^8.0.1",
         "prettier": "^3.9.6",
         "prettier-plugin-tailwindcss": "^0.8.1",
-        "raw-loader": "^4.0.2",
         "rollup-plugin-copy": "^3.5.0",
-        "rollup-plugin-postcss": "^4.0.2",
         "tailwindcss": "^4.3.3",
-        "vite": "8.1.5",
+        "vite": "^8.1.5",
         "vite-plugin-compression": "^0.5.1",
+        "vite-plugin-full-reload": "^1.2.0",
         "vite-plugin-manifest-sri": "^0.2.0",
-        "vite-plugin-remove-console": "^2.2.0",
-        "vite-plugin-restart": "^1.0.0"
+        "vite-plugin-remove-console": "^2.2.0"
     },
     "engines": {
         "node": "^24"

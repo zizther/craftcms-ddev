@@ -1,72 +1,57 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import tailwindcss from "@tailwindcss/vite";
 import copy from 'rollup-plugin-copy';
 import manifestSRI from 'vite-plugin-manifest-sri';
 import path from 'path';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import terser from '@rollup/plugin-terser';
 import viteCompression from 'vite-plugin-compression';
-import ViteRestart from 'vite-plugin-restart';
+import fullReload from 'vite-plugin-full-reload';
 import removeConsole from 'vite-plugin-remove-console';
 
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig(({command}) => ({
     base: command === 'serve' ? '' : '/dist/',
     build: {
-        commonjsOptions: {
-            transformMixedEsModules: true,
-        },
         manifest: true,
         outDir: path.resolve(__dirname, 'web/dist/'),
         sourcemap: true,
-        rollupOptions: {
+        // Vite 8 uses Rolldown
+        rolldownOptions: {
             input: {
                 app: path.resolve(__dirname, 'src/js/app.js'),
                 platform: path.resolve(__dirname, 'src/js/platform.js'),
             },
             output: {
-                manualChunks: function manualChunks(id) {
-                    // console.log('====================');
-                    // console.log({id});
-                    // console.log('====================');
-
-                    // Dependencies
-                    if (id.includes('alpine')) {
-                        return 'al';
-                    }
-                    if (id.includes('gsap')) {
-                        return 'gsap';
-                    }
-                }
+                // The `manualChunks` function form is deprecated in Rolldown.
+                // Use `advancedChunks.groups` with a regex `test` per chunk.
+                advancedChunks: {
+                    groups: [
+                        { name: 'al', test: /alpine/ },
+                        { name: 'gsap', test: /gsap/ },
+                    ],
+                },
             },
+            // Build-only plugins. Comment stripping and JS compression are
+            // now handled by Rolldown's built-in Oxc minifier (was terser),
+            // so only console removal remains here.
             plugins: [
-                tailwindcss(),
-                // Used to remove comments from JS files
-                terser({
-                    format: {
-                        // Remove all comments
-                        comments: false
-                    },
-                    // Prevent any compression
-                    compress: false
-                }),
                 removeConsole(),
             ],
         },
     },
-    esbuild: {
-        loader: 'jsx',
-        jsxFactory: 'h',
-        jsxFragment: 'Fragment',
+    oxc: {
+        jsx: {
+            runtime: 'classic',
+            pragma: 'h',
+            pragmaFrag: 'Fragment',
+        },
         include: [
-            // Add this for business-as-usual behaviour for .jsx files
+            // Business-as-usual behaviour for .jsx files
             "src/js/**/*.jsx",
 
-            // Add these lines to allow all .js files to contain JSX
+            // Allow all .js files to contain JSX
             "src/js/**/*.js",
         ],
-        //include: /\.[jt]sx?$/, // Treats all combinations of .js, .jsx, .ts, and .tsx files as jsx
         exclude: [],
     },
     plugins: [
@@ -83,16 +68,16 @@ export default defineConfig(({command}) => ({
             ],
             hook: 'writeBundle'
         }),
-        nodeResolve(),
         manifestSRI(),
+        tailwindcss(),
         viteCompression({
             filter: /\.(js|mjs|json|css|map)$/i
         }),
-        ViteRestart({
-            reload: [
-                'templates/**/*',
-            ],
-        }),
+        // Full page reload when server-rendered Twig templates change
+        // (they are not part of Vite's module graph).
+        fullReload([
+            'templates/**/*',
+        ]),
     ],
     publicDir: path.resolve(__dirname, 'src/public'),
     resolve: {
